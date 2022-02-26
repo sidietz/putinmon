@@ -1,12 +1,12 @@
 package com.oberamsystems.putinmon.service;
 
 public class TaskRecord {
-	
+
 	private int row;
 	private String Ipv4Address;
 	private String Ipv6Address;
 	private String result;
-	
+
 	public TaskRecord(int row, String Ipv4Address, String Ipv6Address) {
 		this.row = row;
 		this.Ipv4Address = Ipv4Address;

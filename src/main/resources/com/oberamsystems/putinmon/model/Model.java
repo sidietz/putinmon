@@ -4,11 +4,11 @@ import javax.swing.table.DefaultTableModel;
 
 import com.oberamsystems.putinmon.Constants;
 
-@SuppressWarnings("serial")
 public class Model extends DefaultTableModel {
- 
-    public Model() {
-        super(Constants.DATA, Constants.TABLE_HEADER);
-    }
- 
+
+	private static final long serialVersionUID = -3243370514958445955L;
+
+	public Model() {
+		super(Constants.DATA, Constants.TABLE_HEADER);
+	}
 }

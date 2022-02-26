@@ -2,8 +2,7 @@ package com.oberamsystems.putinmon;
 
 public class Constants {
 
-	public static final Object[] TABLE_HEADER = { "URL", "IPv4",
-            "IPv6", "Status"};
+	public static final Object[] TABLE_HEADER = { "URL", "IPv4", "IPv6", "Status"};
  
     public static final Object[][] DATA = {
     		{ "https://www.rt.com", "186.2.163.31", "2001:1af8:4700:b220::112", "unknown"},

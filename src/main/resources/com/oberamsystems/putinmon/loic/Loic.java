@@ -3,11 +3,11 @@ package com.oberamsystems.putinmon.loic;
 import java.net.InetAddress;
 
 public class Loic {
-	
+
 	private String IpAddress = "";
-	
+
 	public Loic(String Ipv4Address, String Ipv6Address) {
-		
+
 		if (Ipv6Address.isEmpty()) {
 			this.setIpAddress(Ipv4Address);
 		} else {
@@ -22,31 +22,31 @@ public class Loic {
 	public void setIpAddress(String ipAddress) {
 		this.IpAddress = ipAddress;
 	}
-	
+
 	public boolean simpleCheckOnline() {
-		
+
 		boolean reachable = false;
-		
-		try{
-        	InetAddress address = InetAddress.getByName(IpAddress);
-            reachable = address.isReachable(3000);
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-		
+
+		try {
+			InetAddress address = InetAddress.getByName(IpAddress);
+			reachable = address.isReachable(3000);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		return reachable;
 	}
-	
-public boolean checkOnlineBool() {
-		
+
+	public boolean checkOnlineBool() {
+
 		boolean reachable = false;
-		
-		try{
-        	InetAddress address = InetAddress.getByName(IpAddress);
-            reachable = address.isReachable(3000);
-        } catch (Exception e){
-           System.out.println("Invalid address!");
-        }
+
+		try {
+			InetAddress address = InetAddress.getByName(IpAddress);
+			reachable = address.isReachable(3000);
+		} catch (Exception e) {
+			System.out.println("Invalid address!");
+		}
 
 		return reachable;
 	}

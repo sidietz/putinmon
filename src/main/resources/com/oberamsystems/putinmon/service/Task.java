@@ -5,7 +5,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import javax.swing.JTable;
 
 public class Task implements Runnable {
-	
+
 	private JTable table;
 	LinkedBlockingQueue<TaskRecord> workQueue;
 
@@ -16,18 +16,17 @@ public class Task implements Runnable {
 
 	@Override
 	public void run() {
-		
+
 		TaskRecord tr;
 		String Ipv4Address = "";
 		String Ipv6Address = "";
-		
+
 		for (int i = 0; i < table.getRowCount(); i++) {
 			Ipv4Address = (String) table.getValueAt(i, 1);
 			Ipv6Address = (String) table.getValueAt(i, 2);
-	        tr  = new TaskRecord(i, Ipv4Address, Ipv6Address);
-	        workQueue.add(tr);
-	     }
+			tr = new TaskRecord(i, Ipv4Address, Ipv6Address);
+			workQueue.add(tr);
+		}
 	}
-	
-	
+
 }

@@ -12,14 +12,13 @@ public class Producer implements Runnable {
 
 	JTable table;
 	LinkedBlockingQueue<TaskRecord> workQueue;
-	
+
 	public Producer(JTable table, LinkedBlockingQueue<TaskRecord> workQueue) {
 		this.table = table;
 		this.workQueue = workQueue;
 	}
 
 	private static final int NUM_OF_THREADS = 16;
-
 
 	public void produce() {
 		ScheduledExecutorService executor = Executors.newScheduledThreadPool(NUM_OF_THREADS);
@@ -35,7 +34,6 @@ public class Producer implements Runnable {
 
 		executor.shutdown();
 	}
-
 
 	@Override
 	public void run() {

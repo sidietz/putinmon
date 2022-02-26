@@ -18,53 +18,51 @@ import com.oberamsystems.putinmon.view.View;
 public class Main {
 
 	public static void main(String[] args) {
-		
+
 		Model model = new Model();
 		JTable table = new JTable() {
-			 /**
-			 * 
-			 */
+			/**
+			* 
+			*/
 			private static final long serialVersionUID = 210673343633087422L;
 
 			@Override
-		        public Component prepareRenderer(TableCellRenderer renderer, int rowIndex,
-		                int columnIndex) {
-		            JComponent component = (JComponent) super.prepareRenderer(renderer, rowIndex, columnIndex);  
+			public Component prepareRenderer(TableCellRenderer renderer, int rowIndex, int columnIndex) {
+				JComponent component = (JComponent) super.prepareRenderer(renderer, rowIndex, columnIndex);
 
-		            if(getValueAt(rowIndex, 3).toString().equalsIgnoreCase("online")) {
-		                component.setBackground(Color.GREEN);
-		            } else if(getValueAt(rowIndex, 3).toString().equalsIgnoreCase("offline")){
-		                component.setBackground(Color.RED);
-		            }
+				if (getValueAt(rowIndex, 3).toString().equalsIgnoreCase("online")) {
+					component.setBackground(Color.GREEN);
+				} else if (getValueAt(rowIndex, 3).toString().equalsIgnoreCase("offline")) {
+					component.setBackground(Color.RED);
+				}
 
-		            return component;
-		        }
+				return component;
+			}
 		};
-		
+
 		table.setModel(model);
-		
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    createAndShowGUI(table);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        
-        
-        LinkedBlockingQueue<TaskRecord> workQueue = new LinkedBlockingQueue<TaskRecord>();
-        LinkedBlockingQueue<TaskRecord> resultQueue = new LinkedBlockingQueue<TaskRecord>();
-        
-        Producer prod = new Producer(table, workQueue);
-        Consumer con = new Consumer(table, workQueue, resultQueue);
-        
-        new Thread(prod).start();
-        new Thread(con).start();
-    }
- 
-    public static void createAndShowGUI(JTable table) throws Exception {
+
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					createAndShowGUI(table);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+
+		LinkedBlockingQueue<TaskRecord> workQueue = new LinkedBlockingQueue<TaskRecord>();
+		LinkedBlockingQueue<TaskRecord> resultQueue = new LinkedBlockingQueue<TaskRecord>();
+
+		Producer prod = new Producer(table, workQueue);
+		Consumer con = new Consumer(table, workQueue, resultQueue);
+
+		new Thread(prod).start();
+		new Thread(con).start();
+	}
+
+	public static void createAndShowGUI(JTable table) throws Exception {
 		new View(table);
-    }
+	}
 }
